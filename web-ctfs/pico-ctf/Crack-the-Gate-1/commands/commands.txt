@@ -1,0 +1,15 @@
+Manual reproduction steps (no shell commands required):
+
+1. Launch the PicoCTF challenge instance and open the login page in Firefox.
+2. Submit the login form once using:
+   Email: ctf-player@picoctf.org
+   Password: 123
+   (This is just to generate the network request; the password is irrelevant.)
+3. Open Firefox Developer Tools -> Network tab.
+4. Find the login POST request, right-click it and choose "Edit and Resend" (or use a header-editing extension).
+5. In the request headers, add:
+   X-Dev-Access: yes
+6. Resend the request. Inspect the response body — the JSON contains the flag: picoCTF{brut4_f0rc4_49d1d186}.
+7.Alternatively intercept the same POST in Burp Suite, add header X-Dev-Access: yes, forward request and view response.
+
+
