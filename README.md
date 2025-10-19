@@ -1,2 +1,2 @@
 # CTFS
-All the Ctfs I have solved so far.
+A collection of all the CTF challenges I have solved so far.
