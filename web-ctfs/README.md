@@ -9,7 +9,7 @@ This repository contains **web-focused CTF writeups** I have completed. Each CTF
 ## Index of CTFs
 
 ### PicoCtf
-- [Crack the Gate 1](/pico-ctf/Crack-the-Gate-1/README.md) – Easy
+- [Crack the Gate 1](Crack-the-Gate-1/README.md) – Easy
 
 ---
 
