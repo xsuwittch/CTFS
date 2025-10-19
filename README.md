@@ -1,2 +1,2 @@
 # CTFS
-All the Ctfs that I have solved so far.
+All the Ctfs I have solved so far.
