@@ -1,1 +1,50 @@
+Manual reproduction steps (no shell commands required):
+
+1. Launch the PicoCTF challenge instance and Download the pcap and key files.
+2. Now we are given the server key for the encrypted packets in the pcap file.
+3. we will use the ssldump command to extract the application data using the key file.
+4. Command:
+    
+    $ ssldump -r capture.pcap -k picopico.key -d > output.txt
+
+5. -r flag is used to read capture.pcap file.
+6. -k flag is used to define the key for the pcap file.
+7. -d use this flag to tell ssldump to show the application data aswell other wise it will only work with the ssl and tsk handshake.
+8. > output.txt store the result in output.txt.
+
+9. Once we have our packet data stored in output.txt we will use;
+
+    $ cat output.txt | grep "CTF"
+
+10. This command reads output.txt and extracts CTF from it.
+
+    Ouput :     61 67 3a 20 70 69 63 6f 43 54 46 7b 74 68 69 73    ag: picoCTF{this
+    67 3a 20 70 69 63 6f 43 54 46 7b 74 68 69 73 2e    g: picoCTF{this.
+    Pico-Flag: picoCTF{this.is.not.your.flag.anymore}
+    00 00 00 01 00 00 00 01 70 69 63 6f 43 54 46 7b    ........picoCTF{
+
+11. Now we can see there are multiple flags in there and 3 of them say "this is not your flag anymore" so we are left with one.
+12. The Flag is not visible though so we will use -A flag with grep to get the rest of the flag.
+
+    $ cat output.txt | grep "CTF" -A 2
+
+    Output:     61 67 3a 20 70 69 63 6f 43 54 46 7b 74 68 69 73    ag: picoCTF{this
+    2e 69 73 2e 6e 6f 74 2e 79 6f 75 72 2e 66 6c 61    .is.not.your.fla
+    67 2e 61 6e 79 6d 6f 72 65 7d 0d 0a 43 6f 6e 74    g.anymore}..Cont
+--
+    67 3a 20 70 69 63 6f 43 54 46 7b 74 68 69 73 2e    g: picoCTF{this.
+    69 73 2e 6e 6f 74 2e 79 6f 75 72 2e 66 6c 61 67    is.not.your.flag
+    2e 61 6e 79 6d 6f 72 65 7d 0d 0a 43 6f 6e 74 65    .anymore}..Conte
+--
+    Pico-Flag: picoCTF{this.is.not.your.flag.anymore}
+    Keep-Alive: timeout=5, max=99
+    Connection: Keep-Alive
+--
+    00 00 00 01 00 00 00 01 70 69 63 6f 43 54 46 7b    ........picoCTF{
+    68 6f 6e 65 79 2e 72 6f 61 73 74 65 64 2e 70 65    honey.roasted.pe
+    61 6e 75 74 73 7d 00 00 ff e2 02 1c 49 43 43 5f    anuts}......ICC_
+
+13. And there we have our falg. "picoCTF{honey.roasted.peanuts}".
+
+
 
