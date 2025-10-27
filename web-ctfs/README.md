@@ -10,6 +10,7 @@ This repository contains **web-focused CTF writeups** I have completed. Each CTF
 
 ### PicoCtf
 - [Crack the Gate 1](pico-ctf/Crack-the-Gate-1/README.md) – Easy
+- [Crack the Gate 1](pico-ctf/WebNet1/commands/commands.txt) – Hard
 
 ---
 
